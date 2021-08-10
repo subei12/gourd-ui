@@ -30,6 +30,8 @@ import Title from '../packages/title/index';
 
 import PullRefresh from '../packages/pull-refresh/index';
 
+import Loading from '../packages/loading/index';
+
 const components = [
   Button,
   Badge,
@@ -46,7 +48,8 @@ const components = [
   Tab,
   Tag,
   Title,
-  PullRefresh
+  PullRefresh,
+  Loading
 ]
 
 let install = function (Vue) {
@@ -79,5 +82,6 @@ export default {
   Tag,
   Title,
   PullRefresh,
+  Loading,
   install
 }

@@ -1,0 +1,84 @@
+.gourd-loading {
+    display: inline-block;
+    color: #c8c9cc;
+    vertical-align: middle;
+
+    @keyframes gourd-rotate {
+        from{
+            transform: rotate(0deg);
+        }
+
+        to{
+            transform: rotate(360deg);
+        }
+    }
+
+    .gourd-loading--steps{
+        animation: gourd-rotate 1s steps(12) infinite;
+    }
+
+    .gourd-loading--smooth{
+        animation: gourd-rotate 2.5s linear infinite;
+    }
+
+    .gourd-loading--spinner {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        font-size: 0;
+        vertical-align: middle;
+
+        i {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            &::before {
+                display: block;
+                width: 2px;
+                height: 25%;
+                margin: 0 auto;
+                content: '';
+                background-color: currentColor;
+                border-radius: 40%;
+            }
+        }
+
+        @deg:30;
+
+        .loop(@counter,@opacity) when (@counter > 0) {
+
+            i:nth-of-type(@{counter}) {
+                @rotate:@counter * @deg;
+                transform: rotate(~'@{rotate}deg');
+                opacity: @opacity;
+            }
+
+            .loop(@counter - 1,@opacity - 0.06)
+        }
+
+        .loop(12,1);
+
+    }
+
+    .gourd-loading-text{
+        display: inline-block;
+        margin-left: 8px;
+        color: #969799;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+}
+
+.gourd-loading--vertical{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    .gourd-loading-text{
+        margin: 6px 0 0;
+    }
+}
