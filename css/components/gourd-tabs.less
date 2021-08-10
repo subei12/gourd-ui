@@ -1,0 +1,61 @@
+.gourd-tabs {
+    overflow: hidden;
+
+    .gourd-tabs--wrap {
+        position: relative;
+        z-index: 10;
+        height: 40px;
+        user-select: none;
+        overflow: hidden;
+        background-color: #fff;
+
+        .gourd-tabs--nav {
+            position: absolute;
+            display: flex;
+            white-space: nowrap;
+            background-color: #fff;
+            transition: all 100ms linear;
+            border-bottom: 1px #ececec solid;
+
+            .gourd-tabs--tab {
+                display: inline-block;
+                flex: 1 0 auto;
+                margin: 0 12px;
+                padding: 10px 0;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .gourd-tabs--nav--line {
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                z-index: 20;
+                width: 40px;
+                border-bottom: 2px solid #0cc85c;
+                border-radius: 2px;
+                transition: all 500ms ease;
+            }
+        }
+
+    }
+
+    .gourd-tabs--content {
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        width: 600%;
+
+        .gourd-tabs--content--container {
+            // position: relative;
+            width: 16.666666666%;
+            // padding: 0 5px;
+            // overflow: auto;
+            background-color: #fff;
+            box-sizing: border-box;
+            touch-action: manipulation;
+        }
+
+    }
+
+}

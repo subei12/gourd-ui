@@ -1,0 +1,76 @@
+.gourd-cell-group {
+    .gourd-cell-group--title {
+        padding: 5px 25rem / @size;
+        font-size: 14px;
+        font-weight: normal;
+        background-color: #f0f0f0;
+    }
+
+    .gourd-cell-group--static {
+
+        .gourd-cell::after {
+            display: block;
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            // left: 25rem / @size;
+            // right: 25rem / @size;
+            bottom: 0;
+            content: '';
+            border-bottom: 1px solid #eeeeee;
+            box-sizing: border-box;
+            transform: scaleY(0.5);
+        }
+
+        .gourd-cell:last-of-type::after {
+            display: none;
+        }
+    }
+
+    // 网格排序
+    .gourd-cell-group--grid {
+        display: flex;
+        flex-wrap: wrap;
+
+        .gourd-cell {
+            width: 50%;
+            padding-right: 2px;
+            font-size: 14px;
+            box-sizing: border-box;
+            .gourd-cell--suffix{
+                margin-right: 6px;
+            }
+        }
+
+        .gourd-cell::after {
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            // left: 25rem / @size;
+            // right: 25rem / @size;
+            bottom: 0;
+            content: '';
+            border-bottom: 1px solid #eeeeee;
+            box-sizing: border-box;
+            transform: scaleY(0.5);
+        }
+
+        .gourd-cell:nth-child(even)::before {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            content: '';
+            border-left: 1px solid #eeeeee;
+            box-sizing: border-box;
+            transform: scaleX(0.5);
+        }
+        .gourd-cell:nth-last-of-type(2)::after,.gourd-cell:last-of-type::after{
+            display: none;
+        }
+
+    }
+
+}

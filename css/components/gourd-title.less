@@ -1,0 +1,113 @@
+.gourd-title {
+    display: flex;
+    // flex-flow: wrap column;
+    flex-direction: column;
+    padding: 8px 10px;
+    // align-items: center;
+
+    &:active {
+        background-color: #eeeeee;
+    }
+
+    .gourd-title--head {
+        line-height: 24px;
+        // vertical-align: middle;
+
+        .gourd-title--prefix {
+            display: inline-block;
+            line-height: normal;
+            margin-right: 2px;
+            // float: right;
+        }
+
+        &>span {
+            color: #000;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+    }
+
+    .gourd-title--describe {
+        margin: 4px 0;
+        color: #666;
+        font-size: 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .gourd-title--cover {
+        position: relative;
+        display: flex;
+        height: 230rem / @size;
+
+        .gourd-image {
+            display: flex;
+            flex: 1;
+            height: 100%;
+
+            .gourd-image--img {
+                flex: 1;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+        }
+
+        .gourd-title--cover--sum {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .gourd-title--footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        font-size: 10px;
+
+        .gourd-title--footer--right {
+            display: flex;
+            align-items: center;
+            color: #000;
+        }
+    }
+
+    .gourd-title--author {
+        margin-right: 8px;
+        color: #999999;
+    }
+
+    .gourd-title--time {
+        // display: inline-block;
+        color: #cacaca;
+        // font-size: 10px;
+    }
+
+    .gourd-title--icon {
+        display: inline-block;
+        width: 14px;
+        height: 12px;
+        margin-right: 2px;
+    }
+
+    .gourd-title--see {
+        // vertical-align: middle;
+        background: url('../../assets/title/ic_topic_read.png') no-repeat center;
+        background-size: 100% 100%;
+    }
+
+    .gourd-title--info {
+        background: url('../../assets/title/ic_resource_comment_message.png') no-repeat center;
+        background-size: 100% 100%;
+    }
+
+    .gourd-title--value {
+        margin-right: 8px;
+        transform: translateY(1px);
+    }
+
+    .gourd-title--value:last-of-type {
+        margin: 0;
+    }
+}

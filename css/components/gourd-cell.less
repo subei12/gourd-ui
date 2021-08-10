@@ -1,0 +1,102 @@
+.gourd-cell{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 25rem / @size;
+    background-color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+.gourd-cell--title{
+    flex: 1;
+}
+
+.gourd-cell > i{
+    color: #e0e0e0;
+    font-size: 20px;
+}
+
+.gourd-cell > i:first-child{
+    margin-right: 5px;
+    font-size: 35px;
+}
+
+.gourd-cell--clickable:active{
+    background-color: #eee;
+}
+
+.gourd-cell--prefix{
+    margin-right: 10px;
+}
+
+.gourd-cell--suffix{
+    font-size: 14px;
+    margin-right: 8px;
+    color: #f4ba06;
+}
+
+.gourd-cell--prefix img{
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+}
+
+// 中等尺寸
+.gourd-cell--medium{
+    padding: 15px;
+
+    & > i:first-child{
+        font-size: 25px;
+    }
+
+    .gourd-cell--prefix img{
+        width: 25px;
+        height: 25px;
+    }
+
+    .gourd-cell--suffix{
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    .gourd-cell--title{
+        font-size: 14px;
+    }
+
+    .gourd-badge{
+     height: 36px;
+     padding: 0 12px;
+     font-size: 20px;
+     line-height: 36px;
+     border-radius: 18px;
+     transform: scale(0.5);
+    }
+
+}
+
+// 适应
+.gourd-cell--adapt{
+    padding: 25rem / @size;
+
+    & > i:first-child{
+        font-size: 35rem / @size;
+    }
+
+    .gourd-cell--prefix img{
+        width: 45rem / @size;
+        min-width: 25px;
+        height: 45rem / @size;
+        min-height: 25px;
+    }
+
+    .gourd-cell--suffix{
+        font-size: 12px;
+        margin-right: 8rem / @size;
+    }
+
+    .gourd-cell--title{
+        font-size: 14px;
+    }
+}
