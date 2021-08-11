@@ -1,4 +1,4 @@
-import { Loading } from 'vant';
+import Loading from '../../loading/index';
 
 export default {
     name: 'PullRefreshHead',
@@ -37,13 +37,9 @@ export default {
                     h(Loading, {
                         props: {
                             size: '16px',
-                            type: 'spinner'
-                        },
-                        style: {
-                            display: 'inline-block'
+                            smooth:true
                         }
-                    }),
-                    this.$parent.LoadingText
+                    }, this.$parent.LoadingText),
                 ]);
             }
 

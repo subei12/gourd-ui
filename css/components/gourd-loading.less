@@ -19,6 +19,7 @@
 
     .gourd-loading--smooth{
         animation: gourd-rotate 2.5s linear infinite;
+        animation-fill-mode: backwards;
     }
 
     .gourd-loading--spinner {
@@ -47,9 +48,10 @@
             }
         }
 
+        @loopSum:12;
         @deg:30;
 
-        .loop(@counter,@opacity) when (@counter > 0) {
+        .loop(@counter,@opacity) when (@counter <= @loopSum) {
 
             i:nth-of-type(@{counter}) {
                 @rotate:@counter * @deg;
@@ -57,10 +59,10 @@
                 opacity: @opacity;
             }
 
-            .loop(@counter - 1,@opacity - 0.06)
+            .loop(@counter + 1,@opacity - 0.06)
         }
 
-        .loop(12,1);
+        .loop(1,1);
 
     }
 
