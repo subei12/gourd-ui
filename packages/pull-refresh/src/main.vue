@@ -68,7 +68,8 @@ export default {
 			text: '',
 			isLoading: false,
 			timer: '',
-			type: 1
+			type: 1,
+			disableds: false
 		};
 	},
 	mounted() {
@@ -76,12 +77,12 @@ export default {
 	},
 	methods: {
 		start(event) {
-			if (this.isLoading || this.disabled) return;
+			if (this.isLoading || this.disabled | this.disableds) return;
 			this.flag = false;
 			this.start_Y = event.changedTouches[0].clientY;
 		},
 		move(event) {
-			if (this.isLoading || this.disabled) return;
+			if (this.isLoading || this.disabled | this.disableds) return;
 
 			var end_Y = event.changedTouches[0].clientY;
 
@@ -102,7 +103,7 @@ export default {
 		end(event) {
 			this.flag = true;
 
-			if (this.isLoading || this.disabled) return;
+			if (this.isLoading || this.disabled | this.disableds) return;
 
 			var end_Y = event.changedTouches[0].clientY;
 
