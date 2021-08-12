@@ -33,5 +33,11 @@ export default {
             }
             return navStyle;
         }
+    },
+    mounted(){
+        this.$nextTick(()=>{
+            console.log(this.$el.offsetHeight);
+            
+        });
     }
 }

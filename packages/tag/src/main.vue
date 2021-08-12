@@ -1,5 +1,5 @@
 <template>
-  <span class="gourd-tag" :class="['gourd-tag--'+type,round ? 'gourd-tag--round':'']" :style="tagStyle">
+  <span class="gourd-tag" :class="['gourd-tag--'+type,{'gourd-tag--round':round,'gourd-tag--small':small}]" :style="tagStyle">
     <slot></slot>
   </span>
 </template>
@@ -20,7 +20,8 @@ export default {
 			type: String,
 			default: ''
 		},
-		round: Boolean
+		round: Boolean,
+		small: Boolean
 	},
 	computed: {
 		tagStyle() {

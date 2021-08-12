@@ -92,8 +92,7 @@ class TabNav {
         }
 
         var navOne = this.tabNavTabs[options.initIndex] || this.tabNavTabs[0];
-        this.moveLine(navOne);
-        this.tabWarp.style.height = this.tabNav.offsetHeight + 'px';
+        navOne && this.moveLine(navOne);
         this.tabNav.addEventListener('touchstart', this.start.bind(this));
         this.tabNav.addEventListener('touchmove', this.move.bind(this));
         this.tabNav.addEventListener('touchend', this.end.bind(this));
@@ -128,7 +127,10 @@ class TabNav {
 
         transform(this.tabNav, 'translateX', moveX);
 
-        event.preventDefault();
+        if (event.cancelable) {
+            event.preventDefault();
+        }
+
     }
 
     end(event) {
@@ -270,7 +272,9 @@ class TabContent {
 
         transform(this.tabContent, 'translateX', moveX);
 
-        event.preventDefault();
+        if (event.cancelable) {
+            event.preventDefault();
+        }
     }
 
     end(event) {
@@ -293,7 +297,7 @@ class TabContent {
                 this.index++;
             }
         }
-        
+
         this.moveContent(this.index);
 
         this.options.end(this.index);
@@ -302,6 +306,8 @@ class TabContent {
     moveContent(index) {
 
         this.index = index;
+
+        if (!this.tabContentContainers[this.index]) return;
 
         this.tabContent.style.transition = 'all 0.5s';
 

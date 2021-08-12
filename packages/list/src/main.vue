@@ -1,5 +1,5 @@
 <template>
-  <div class="gourd-list" ref="list" @scroll="listScroll">
+  <div class="gourd-list" ref="list" @scroll="listScroll" :style="listStyle">
     <div class="gourd-list--content" ref="content">
       <slot></slot>
       <div class="gourd-list--loading" :style="loading">
@@ -19,10 +19,16 @@ export default {
 		'gourd-list-loading': Loading
 	},
 	model: {
-		event: 'change'
+		event: 'change',
+		prop: 'value'
 	},
 	props: {
-		value: Boolean
+		value: Boolean,
+		height: {
+			type: [String, Number],
+			default: ''
+		},
+		scroll: Boolean
 	},
 	data() {
 		return {
@@ -35,10 +41,13 @@ export default {
 
 			var scrollHeight = Math.floor(this.$refs.list.scrollHeight);
 
-			var clientHeight = Math.floor(this.$refs.list.clientHeight);
+			var clientHeight = Math.floor(this.$refs.list.clientHeight) + 2;
 
-			if (scrollHeight - clientHeight === scrollTop && this.first && !this.value) {
+			// console.log(scrollTop, scrollHeight, clientHeight);
+
+			if (scrollTop >= scrollHeight - clientHeight && this.first && !this.value) {
 				this.$emit('change', true);
+
 				this.$nextTick(() => {
 					this.$emit('load');
 				});
@@ -64,8 +73,17 @@ export default {
 	computed: {
 		loading() {
 			// var show = 'hidden';
+
 			return {
 				visibility: this.value ? 'visible' : 'hidden'
+			};
+		},
+		listStyle() {
+			var height = parseInt(this.height);
+
+			return {
+				height: height + 'px',
+				overflow: this.scroll ? 'visible' : ''
 			};
 		}
 	}

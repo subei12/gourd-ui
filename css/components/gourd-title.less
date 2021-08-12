@@ -14,10 +14,17 @@
         // vertical-align: middle;
 
         .gourd-title--prefix {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             line-height: normal;
             margin-right: 2px;
             // float: right;
+
+            .gourd-tag+.gourd-badge,
+            .gourd-badge+.gourd-tag {
+                margin-left: 2px;
+            }
+
         }
 
         &>span {

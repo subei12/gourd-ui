@@ -1,7 +1,7 @@
 <template>
   <div class="gourd-tabs" ref="tabs">
     <div class="gourd-tabs--wrap" :style="wrapStyle" ref="wrap">
-      <tabs-nav :tab-items="items" :tab-content="tabContent" :color="color"></tabs-nav>
+      <tabs-nav :tab-items="items" :tab-content="tabContent" :color="color" ref="nav"></tabs-nav>
     </div>
 
     <!-- 占位元素 -->
@@ -61,7 +61,7 @@ export default {
 		updateTitle(text) {
 			this.titleTexts.push(text);
 		},
-		tabContentEnd(index) {
+		tabContentEnd(index = 0) {
 			this.index = index;
 			this.tabNav.moveLine(this.tabNav.tabNavTabs[index]);
 		},
@@ -94,7 +94,6 @@ export default {
 			});
 
 			this.offsetTop = this.$refs.wrap.offsetTop;
-
 		});
 
 		if (this.ceiling) {
