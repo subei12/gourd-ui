@@ -34,6 +34,8 @@ import Loading from '../packages/loading/index';
 
 import List from '../packages/list/index';
 
+import Overlay from '../packages/overlay/index';
+
 const components = [
   Button,
   Badge,
@@ -52,7 +54,8 @@ const components = [
   Title,
   PullRefresh,
   Loading,
-  List
+  List,
+  Overlay
 ]
 
 let install = function (Vue) {
@@ -87,5 +90,6 @@ export default {
   PullRefresh,
   Loading,
   List,
+  Overlay,
   install
 }

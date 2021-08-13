@@ -105,8 +105,8 @@ export default {
 	watch: {
 		index: {
 			handler() {
-				this.$emit('change', this.index);
 				this.$emit('async', this.index);
+				this.$emit('change', this.index);
 			}
 		}
 	},

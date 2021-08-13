@@ -1,7 +1,11 @@
 <template>
   <div class="gourd-list" ref="list" @scroll="listScroll" :style="listStyle">
     <div class="gourd-list--content" ref="content">
-      <slot></slot>
+      <slot>
+        <div class="gourd-list--default">
+          <gourd-list-loading size="24"></gourd-list-loading>
+        </div>
+      </slot>
       <div class="gourd-list--loading" :style="loading">
         <gourd-list-loading size="16" smooth></gourd-list-loading>
         <span>查看更多</span>

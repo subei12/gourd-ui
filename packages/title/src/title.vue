@@ -55,7 +55,7 @@ export default {
 			default: ''
 		},
 		time: {
-			type: String,
+			type: [String, Number],
 			default: ''
 		},
 		BottomLine: {

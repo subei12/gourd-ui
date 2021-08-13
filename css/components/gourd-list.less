@@ -1,4 +1,5 @@
 .gourd-list {
+    position: relative;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -20,5 +21,16 @@
         &:active {
             background-color: #ebebeb;
         }
+    }
+
+    .gourd-list--default{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 }

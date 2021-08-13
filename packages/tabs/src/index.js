@@ -143,6 +143,9 @@ class TabNav {
 
         var index = Array.from(this.tabNavTabs).indexOf(source);
 
+        // console.log(source,index);
+        
+
         this.moveLine(target);
 
         this.options.end(index);
@@ -300,7 +303,6 @@ class TabContent {
 
         this.moveContent(this.index);
 
-        this.options.end(this.index);
         // this.TabNav.moveLine(this.TabNav.tabNavTabs[this.index]);
     }
     moveContent(index) {
@@ -321,6 +323,8 @@ class TabContent {
         var x = this.tabContentContainers[this.index].offsetLeft;
 
         transform(this.tabContent, 'translateX', -x);
+
+        this.options.end(this.index);
     }
 }
 
