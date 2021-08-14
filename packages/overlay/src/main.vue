@@ -1,5 +1,5 @@
 <template>
-  <div class="gourd-overlay" :style="overlay" v-show="value" @click="clickHandler">
+  <div class="gourd-overlay" :style="overlay" v-show="value" @click="clickHandler" @touchmove.prevent @mousewheel.prevent>
     <slot></slot>
   </div>
 </template>
