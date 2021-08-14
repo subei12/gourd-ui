@@ -36,6 +36,8 @@ import List from '../packages/list/index';
 
 import Overlay from '../packages/overlay/index';
 
+import PostCard from '../packages/post-card/index';
+
 const components = [
   Button,
   Badge,
@@ -55,7 +57,8 @@ const components = [
   PullRefresh,
   Loading,
   List,
-  Overlay
+  Overlay,
+  PostCard
 ]
 
 let install = function (Vue) {
@@ -91,5 +94,6 @@ export default {
   Loading,
   List,
   Overlay,
+  PostCard,
   install
 }

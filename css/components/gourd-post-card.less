@@ -1,0 +1,62 @@
+.gourd-post-card {
+    display: flex;
+    padding: 10px;
+    user-select: none;
+
+    .gourd-post-card--left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-right: 10px;
+
+        .gourd-post-card--call {
+            margin-top: 2px;
+            color: #12c960;
+            font-size: 12px;
+        }
+    }
+
+    .gourd-post-card--right {
+        flex: 1;
+
+        .gourd-post-card--top {
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: #000;
+            font-size: 14px;
+
+            .gourd-image + .gourd-image {
+                // margin-left: 0.1em;
+                margin: 0;
+            }
+
+            .gourd-post-card--floor {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                color: #12c960;
+                font-size: 12px;
+                transform: translateY(-50%);
+            }
+        }
+
+        .gourd-post-card--row {
+            display: flex;
+            margin-top: 2px;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .gourd-post-card--time {
+            padding: 4px 0;
+            color: #cbcbcb;
+            font-size: 10px;
+        }
+    }
+}
+
+.gourd-post-card:active{
+    background-color: #eeeeee;
+}
