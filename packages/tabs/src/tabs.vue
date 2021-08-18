@@ -1,6 +1,6 @@
 <template>
   <div class="gourd-tabs" ref="tabs">
-    <div class="gourd-tabs--wrap" :style="wrapStyle" ref="wrap">
+    <div class="gourd-tabs--wrap" :style="wrapStyle" ref="wrap" @touchmove.prevent>
       <tabs-nav :tab-items="items" :tab-content="tabContent" :color="color" ref="nav"></tabs-nav>
     </div>
 

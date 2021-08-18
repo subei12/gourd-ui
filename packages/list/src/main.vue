@@ -1,5 +1,5 @@
 <template>
-  <div class="gourd-list" ref="list" @scroll="listScroll" :style="listStyle">
+  <div class="gourd-list" ref="list" @scroll="listScroll" @touchstart="start" @touchmove="move" @touchend="end" :style="listStyle">
     <div class="gourd-list--content" ref="content">
       <slot>
         <div class="gourd-list--default">
@@ -32,15 +32,64 @@ export default {
 			type: [String, Number],
 			default: ''
 		},
-		scroll: Boolean
+		DisableScroll: Boolean
 	},
 	data() {
 		return {
-			first: true
+			first: true,
+			scrollTop: 0,
+			scrollLeft: 0,
+			timer: '',
+			moveStart_Y: 0,
+			firstMove: true,
+			scrolling: false
 		};
 	},
+	activated() {
+		this.$refs.list.scroll(this.scrollLeft, this.scrollTop);
+	},
 	methods: {
+		scroll(left = 0, top = 0) {
+			this.$refs.list.scroll(left, top);
+		},
+		start(e) {
+			this.moveStart_Y = e.changedTouches[0].clientY;
+			// 兼容下拉刷新组件
+			if (this.$parent.$options.name === 'GourdPullRefresh') {
+				this.$parent.disableds = true;
+			}
+		},
+		move(e) {
+			if (this.firstMove) {
+				this.firstMove = false;
+				this.moveStart_Y = e.changedTouches[0].clientY - this.moveStart_Y;
+
+				// 兼容下拉刷新组件
+				if (this.$parent.$options.name === 'GourdPullRefresh') {
+					if (this.moveStart_Y > 0 && this.$refs.list.scrollTop === 0) {
+						this.$parent.disableds = false;
+						// e.preventDefault();
+						this.scrolling = true;
+					}
+				}
+			}
+
+		},
+		end(e) {
+			this.firstMove = true;
+			this.scrolling = false;
+		},
 		listScroll(e) {
+			// 防抖
+			if (this.timer) {
+				clearTimeout(this.timer);
+			}
+
+			this.timer = setTimeout(() => {
+				this.scrollTop = e.target.scrollTop;
+				this.scrollLeft = e.target.scrollLeft;
+			}, 15);
+
 			var scrollTop = Math.floor(this.$refs.list.scrollTop);
 
 			var scrollHeight = Math.floor(this.$refs.list.scrollHeight);
@@ -56,14 +105,6 @@ export default {
 					this.$emit('load');
 				});
 				this.first = false;
-			}
-
-			if (this.$parent.$options.name === 'GourdPullRefresh') {
-				if (scrollTop === 0) {
-					this.$parent.disableds = false;
-				} else {
-					this.$parent.disableds = true;
-				}
 			}
 		}
 	},
@@ -87,7 +128,7 @@ export default {
 
 			return {
 				height: height + 'px',
-				overflow: this.scroll ? 'visible' : ''
+				overflow: this.DisableScroll || this.scrolling ? 'hidden' : ''
 			};
 		}
 	}

@@ -77,9 +77,9 @@ export default {
 	},
 	methods: {
 		start(event) {
-			if (this.isLoading || this.disabled | this.disableds) return;
 			this.flag = false;
 			this.start_Y = event.changedTouches[0].clientY;
+			if (this.isLoading || this.disabled | this.disableds) return;
 		},
 		move(event) {
 			if (this.isLoading || this.disabled | this.disableds) return;

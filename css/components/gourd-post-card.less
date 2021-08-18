@@ -27,9 +27,9 @@
             color: #000;
             font-size: 14px;
 
-            .gourd-image + .gourd-image {
-                // margin-left: 0.1em;
-                margin: 0;
+            .gourd-image+.gourd-image,
+            .gourd-image:first-of-type {
+                margin-left: 0.1em;
             }
 
             .gourd-post-card--floor {
@@ -57,6 +57,6 @@
     }
 }
 
-.gourd-post-card:active{
+.gourd-post-card:active {
     background-color: #eeeeee;
 }

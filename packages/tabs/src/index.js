@@ -104,13 +104,18 @@ class TabNav {
 
         this.orgin_left = transform(this.tabNav, 'translateX');
 
+        event.preventDefault();
     }
 
     move(event) {
 
-        if (this.tabNav.offsetWidth < this.tabWarp.offsetWidth) return;
-
         this.isMove = true;
+
+        if (event.cancelable) {
+            event.preventDefault();
+        }
+
+        if (this.tabNav.offsetWidth < this.tabWarp.offsetWidth) return;
 
         this.end_x = event.changedTouches[0].clientX;
 
@@ -127,10 +132,6 @@ class TabNav {
 
         transform(this.tabNav, 'translateX', moveX);
 
-        if (event.cancelable) {
-            event.preventDefault();
-        }
-
     }
 
     end(event) {
@@ -144,7 +145,7 @@ class TabNav {
         var index = Array.from(this.tabNavTabs).indexOf(source);
 
         // console.log(source,index);
-        
+
 
         this.moveLine(target);
 
