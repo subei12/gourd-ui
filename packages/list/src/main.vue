@@ -7,8 +7,13 @@
         </div>
       </slot>
       <div class="gourd-list--loading" :style="loading">
-        <gourd-list-loading size="16" smooth></gourd-list-loading>
-        <span>查看更多</span>
+        <template v-if="finished">
+          <span>{{FinishedText}}</span>
+        </template>
+        <template v-else>
+          <gourd-list-loading size="16" smooth></gourd-list-loading>
+          <span>{{LoadingText}}</span>
+        </template>
       </div>
     </div>
   </div>
@@ -32,7 +37,17 @@ export default {
 			type: [String, Number],
 			default: ''
 		},
-		DisableScroll: Boolean
+		// 是否全部加载完成
+		finished: Boolean,
+		DisableScroll: Boolean,
+		LoadingText: {
+			type: String,
+			default: '查看更多'
+		},
+		FinishedText: {
+			type: String,
+			default: ''
+		}
 	},
 	data() {
 		return {
@@ -73,7 +88,6 @@ export default {
 					}
 				}
 			}
-
 		},
 		end(e) {
 			this.firstMove = true;
@@ -98,7 +112,7 @@ export default {
 
 			// console.log(scrollTop, scrollHeight, clientHeight);
 
-			if (scrollTop >= scrollHeight - clientHeight && this.first && !this.value) {
+			if (scrollTop >= scrollHeight - clientHeight && !this.finished && this.first && !this.value) {
 				this.$emit('change', true);
 
 				this.$nextTick(() => {
@@ -119,15 +133,21 @@ export default {
 		loading() {
 			// var show = 'hidden';
 
+			if (this.finished && this.FinishedText === '') {
+				return {
+					display: 'none'
+				};
+			}
+
 			return {
-				visibility: this.value ? 'visible' : 'hidden'
+				visibility: this.value || this.finished ? 'visible' : 'hidden'
 			};
 		},
 		listStyle() {
-			var height = parseInt(this.height);
+			var height = isNaN(this.height) ? this.height : parseInt(this.height) + 'px';
 
 			return {
-				height: height + 'px',
+				height: height,
 				overflow: this.DisableScroll || this.scrolling ? 'hidden' : ''
 			};
 		}

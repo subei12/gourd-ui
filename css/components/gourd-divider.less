@@ -1,0 +1,51 @@
+.gourd-divider {
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #a9a9a9;
+    border-color: #e6e6e6;
+    // border-color: #dcdfe6;
+    border-style: solid;
+    border-width: 0;
+
+    &::before,
+    &::after {
+        display: block;
+        flex: 1;
+        height: 1px;
+        content: '';
+        border-color: inherit;
+        border-style: inherit;
+        border-width: 1px 0 0;
+        box-sizing: border-box;
+    }
+
+
+}
+
+.gourd-divider--hairline {
+
+    &::before,
+    &::after {
+        transform: scaleY(0.5);
+    }
+
+}
+
+.gourd-divider--center::before,
+.gourd-divider--left::before,
+.gourd-divider--right::before {
+    margin-right: 16px;
+}
+
+.gourd-divider--center::after,
+.gourd-divider--left::after,
+.gourd-divider--right::after {
+    margin-left: 16px;
+}
+
+.gourd-divider--left::before,
+.gourd-divider--right::after {
+    max-width: 15%;
+}
