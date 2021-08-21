@@ -40,6 +40,8 @@ import PostCard from '../packages/post-card/index';
 
 import Divider from '../packages/divider/index';
 
+import Dialog from '../packages/dialog/index';
+
 const components = [
   Button,
   Badge,
@@ -61,7 +63,8 @@ const components = [
   List,
   Overlay,
   PostCard,
-  Divider
+  Divider,
+  Dialog
 ]
 
 let install = function (Vue) {
@@ -99,5 +102,6 @@ export default {
   Overlay,
   PostCard,
   Divider,
+  Dialog,
   install
 }

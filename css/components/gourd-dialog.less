@@ -1,0 +1,70 @@
+.gourd-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 70%;
+    color: #343434;
+    font-size: 16px;
+    background-color: #fff;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    .gourd-dialog--header {
+        padding: 10px 20px 0;
+        color: #13ce63;
+    }
+
+    .gourd-dialog--header__center{
+        text-align: center;
+    }
+
+    .gourd-dialog--body {
+        position: relative;
+        padding: 26px 20px;
+        font-size: 14px;
+
+        &::after {
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            z-index: 10;
+            content: '';
+            border-bottom: 1px solid #eee;
+            transform: scaleY(0.5);
+            box-sizing: border-box;
+        }
+    }
+
+    .gourd-dialog--footer {
+        display: flex;
+
+        button {
+            flex: 1;
+            margin: 4px;
+            padding: 0;
+            border: none;
+            font-size: 14px;
+        }
+
+        .gourd-button--default {
+            margin: 0;
+            padding: 14px 0;
+        }
+
+        .gourd-button--default+.gourd-button--default::after {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+            content: '';
+            border-left: 1px solid #eee;
+            transform: scaleX(0.5);
+            box-sizing: border-box;
+        }
+    }
+}

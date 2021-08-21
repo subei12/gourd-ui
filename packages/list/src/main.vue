@@ -8,7 +8,7 @@
       </slot>
       <div class="gourd-list--loading" :style="loading">
         <template v-if="finished">
-          <span>{{FinishedText}}</span>
+          <gourd-list-divider>{{FinishedText}}</gourd-list-divider>
         </template>
         <template v-else>
           <gourd-list-loading size="16" smooth></gourd-list-loading>
@@ -22,10 +22,13 @@
 <script>
 import Loading from '../../loading/index';
 
+import Divider from '../../divider/index';
+
 export default {
 	name: 'GourdList',
 	components: {
-		'gourd-list-loading': Loading
+		'gourd-list-loading': Loading,
+		'gourd-list-divider': Divider
 	},
 	model: {
 		event: 'change',
