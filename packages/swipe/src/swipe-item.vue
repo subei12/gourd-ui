@@ -1,5 +1,5 @@
 <template>
-  <li class="gourd-swipe-item" :style="style">
+  <li class="gourd-swipe-item" :style="style" @click="handledClick">
     <slot></slot>
     <div class="gourd-swipe-item--overlay" v-if="text">
       <span :style="textStyle">{{text}}</span>
@@ -32,6 +32,11 @@ export default {
 	},
 	destroyed() {
 		this.$parent && this.$parent.updateItems();
+	},
+	methods: {
+		handledClick(event) {
+			this.$emit('click', event);
+		}
 	},
 	computed: {
 		textStyle() {

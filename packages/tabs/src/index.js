@@ -310,8 +310,6 @@ class TabContent {
 
         this.index = index;
 
-        if (!this.tabContentContainers[this.index]) return;
-
         this.tabContent.style.transition = 'all 0.5s';
 
         if (this.index < 0) {
@@ -320,6 +318,8 @@ class TabContent {
             this.index = this.tabContentContainers.length - 1;
         }
         // console.log(this.index);
+
+        if (!this.tabContentContainers[this.index]) return;
 
         var x = this.tabContentContainers[this.index].offsetLeft;
 

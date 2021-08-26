@@ -1,9 +1,4 @@
 .gourd-tabbar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
     display: flex;
     max-width: @DesignSize + 0px;
     height: 50px;
@@ -14,4 +9,12 @@
     .gourd-tabbar-item--active {
         color: #22cd6b;
     }
+}
+
+.gourd-tabbar--fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
 }

@@ -1,11 +1,11 @@
 <template>
-  <div class="gourd-image" :style="Width">
+  <div class="gourd-image" :style="Width" @click="handledClick">
     <div class="gourd-image--error" v-if="isError" :class="{'gourd-image--round':round}" :style="Height">
       <i class="iconfont icon-photo-fail" :style="{'fontSize':size}"></i>
     </div>
 
     <div class="gourd-image--img" v-else :class="{'gourd-image--round':round}" :style="Height">
-      <img :src="src" :alt="alt" @error="err" :style="{'objectFit':fit}">
+      <img :src="src" :alt="alt" @error="err" @load="load" :style="{'objectFit':fit}">
     </div>
 
     <div class="gourd-image--text" v-if="text" :style="Width">
@@ -55,11 +55,13 @@ export default {
 	methods: {
 		err() {
 			this.isError = true;
-		}
-	},
-	created() {
-		if (this.$parent.$options.name === 'GroudImageGroup') {
-			this.$parent.updateLists();
+			this.$emit('error');
+		},
+		load() {
+			this.$emit('load');
+		},
+		handledClick(event) {
+			this.$emit('click', event);
 		}
 	},
 	computed: {

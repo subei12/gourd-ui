@@ -1,5 +1,5 @@
 <template>
-  <div class="gourd-cell" @click="handleClick" @touchstart="func" :class="[
+  <div class="gourd-cell" @click="handleClick" :class="[
     size ?  'gourd-cell--'+ size : '',
     {
         'gourd-cell--clickable':link
@@ -45,11 +45,6 @@ export default {
 			default: ''
 		}
 	},
-	data() {
-		return {
-			time: 0
-		};
-	},
 	methods: {
 		handleClick(event) {
 			setTimeout(() => {
@@ -60,9 +55,6 @@ export default {
 			});
 
 			this.$emit('click', event);
-		},
-		func() {
-			this.time = Date.now();
 		}
 	}
 };

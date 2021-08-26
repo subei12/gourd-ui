@@ -126,7 +126,7 @@
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | :---: |
 | `type` | 	类型，可选值为 `primary` `info` `warning` `danger` | `string` | `default` |
-| `size` | `可选值为` `medium` / `small` / `mini`	 | `string` | -- |
+| `size` | 可选值为 `medium` / `small` / `mini`	 | `string` | -- |
 | `plain` | 是否朴素按钮	| `boolean`	 | `false` |
 | `round` | 是否圆角按钮	| `boolean`	 | `false` |
 | `circle` | 是否圆形按钮	| `boolean`	 | `false` |

@@ -40,6 +40,7 @@ export default {
 		click() {
 			
 			this.$parent.updateModelVal(this.index);
+
 			if (this.$parent.route && this.to && this.$route.path !== this.to) {
 				this.$router.push(this.to);
 			}

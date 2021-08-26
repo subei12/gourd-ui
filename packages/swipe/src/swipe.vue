@@ -70,7 +70,6 @@ export default {
 		});
 	},
 	activated() {
-		this.timerEnd();
 		this.timerStart(this.interval);
 	},
 	deactivated() {
@@ -79,7 +78,6 @@ export default {
 	methods: {
 		updateItems() {
 			this.items = this.$children.filter(child => child.$options.name === 'GourdSwipeItem');
-			this.timerEnd();
 			this.timerStart(this.interval);
 		},
 		viewChange() {
@@ -114,6 +112,7 @@ export default {
 		},
 		timerStart(time = 3000) {
 			// console.log(this.items.length);
+			this.timerEnd();
 
 			if (this.autoplay && this.items.length >= 2) {
 				this.timerKey = setInterval(() => {

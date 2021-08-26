@@ -3,8 +3,8 @@
 
     <div class="groud-image-group--container" :style="container">
       <slot></slot>
-      <div class="groud-image-group--more" :class="{'groud-image-group--fixed':moreFixed}" :style="more">
-        <i class="iconfont icon-ellipsis" :style="{'fontSize':size}"></i>
+      <div class="groud-image-group--more" v-if="more" :class="{'groud-image-group--fixed':moreFixed}" :style="moreStyle">
+        <i class="iconfont icon-icon_right" :style="{'fontSize':size}"></i>
       </div>
     </div>
 
@@ -29,6 +29,10 @@ export default {
 		overflow: {
 			type: String,
 			default: ''
+		},
+		more: {
+			type: Boolean,
+			default: true
 		}
 	},
 	data() {
@@ -41,11 +45,11 @@ export default {
 	},
 	methods: {
 		updateLists() {
-			this.lists = this.$slots.default || [];
+			this.lists = this.$children || [];
 		}
 	},
 	computed: {
-		more() {
+		moreStyle() {
 			var width = this.width + 'px',
 				height = this.height + 'px';
 			return {
@@ -58,8 +62,10 @@ export default {
 			var widths = [];
 
 			this.lists.forEach(item => {
-				var width = item.componentOptions.propsData.width;
-				widths.push(parseInt(width || 100));
+				if (item.$options.name === 'GourdImage') {
+					var width = item.width;
+					widths.push(parseInt(width || 100));
+				}
 			});
 
 			return Math.ceil(average.apply(null, widths));
@@ -68,8 +74,10 @@ export default {
 			var heights = [];
 
 			this.lists.forEach(item => {
-				var height = item.componentOptions.propsData.height;
-				heights.push(parseInt(height || 100));
+				if (item.$options.name === 'GourdImage') {
+					var height = item.height;
+					heights.push(parseInt(height || 100));
+				}
 			});
 
 			return Math.ceil(average.apply(null, heights));

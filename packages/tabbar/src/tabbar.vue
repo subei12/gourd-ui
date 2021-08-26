@@ -1,5 +1,5 @@
 <template>
-  <div class="gourd-tabbar">
+  <div class="gourd-tabbar" :class="{'gourd-tabbar--fixed':fixed}">
     <slot></slot>
   </div>
 </template>
@@ -16,6 +16,10 @@ export default {
 		activeColor: {
 			type: String,
 			default: ''
+		},
+		fixed: {
+			type: Boolean,
+			default: true
 		}
 	},
 	model: {

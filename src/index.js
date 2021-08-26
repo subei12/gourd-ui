@@ -73,7 +73,6 @@ let install = function (Vue) {
   });
 }
 
-import '../css/index.less';
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
