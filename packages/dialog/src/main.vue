@@ -43,13 +43,13 @@ export default {
 	},
 
 	methods: {
-		handlerOverlayClick() {
+		handlerOverlayClick(event) {
 			if (this.closeOnClickOverlay) {
 				this.$emit('change', false);
 			}
 
 			if (this.$listeners['overlay-click']) {
-				this.$emit('overlay-click');
+				this.$emit('overlay-click', event);
 			}
 		}
 	}

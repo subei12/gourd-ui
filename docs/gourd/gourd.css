@@ -1,3 +1,6 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[0].rules[0].use[1]!./node_modules/less-loader/dist/cjs.js!./css/index.less ***!
+  \*************************************************************************************************************************************/
 /*
 
     在 750px 的屏幕下 
@@ -580,7 +583,6 @@
   width: 40px;
   border-bottom: 2px solid #0cc85c;
   border-radius: 2px;
-  transition: all 500ms ease;
 }
 .gourd-tabs .gourd-tabs--content {
   display: flex;
@@ -671,7 +673,7 @@
 .gourd-title .gourd-title--cover {
   position: relative;
   display: flex;
-  height: 230rem / 40;
+  height: 5.75rem;
 }
 .gourd-title .gourd-title--cover .gourd-image {
   display: flex;
@@ -713,11 +715,11 @@
   margin-right: 2px;
 }
 .gourd-title .gourd-title--see {
-  background: url(bc5401a020f381dd8590.png) no-repeat center;
+  background: url(files/ic_topic_read.png) no-repeat center;
   background-size: 100% 100%;
 }
 .gourd-title .gourd-title--info {
-  background: url(3a1b4a2105ef759b9e8d.png) no-repeat center;
+  background: url(files/ic_resource_comment_message.png) no-repeat center;
   background-size: 100% 100%;
 }
 .gourd-title .gourd-title--value {
@@ -1072,4 +1074,43 @@ body {
   font-family: '微软雅黑';
   background-color: #ffffff;
 }
+
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[0].rules[0].use[1]!./assets/icon/iconfont.css ***!
+  \********************************************************************************************************/
+@font-face {
+  font-family: "iconfont"; /* Project id 2769446 */
+  src: url(files/iconfont.woff2) format('woff2'),
+       url(files/iconfont.woff) format('woff'),
+       url(files/iconfont.ttf) format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon_right:before {
+  content: "\e619";
+}
+
+.icon-photo-fail:before {
+  content: "\e7d3";
+}
+
+.icon-nv:before {
+  content: "\e607";
+}
+
+.icon-nan:before {
+  content: "\e6cd";
+}
+
+.icon-chakan:before {
+  content: "\e634";
+}
+
 

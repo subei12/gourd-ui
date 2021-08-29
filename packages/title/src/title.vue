@@ -6,7 +6,14 @@
       </div>
       <span v-text="title"></span>
     </div>
-    <p class="gourd-title--describe" v-if="describe" v-text="describe"></p>
+    <p class="gourd-title--describe" v-if="describe || $slots.describe">
+      <template v-if="$slots.describe">
+        <slot name="describe"></slot>
+      </template>
+      <template v-else>
+        {{describe}}
+      </template>
+    </p>
 
     <div class="gourd-title--cover" v-if="covers.length!==0">
       <gourd-image v-for="(item,index) in displayCovers" :key="index" fit="cover" :src="item"></gourd-image>

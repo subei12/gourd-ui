@@ -20,8 +20,8 @@ export default {
 		}
 	},
 	methods: {
-		clickHandler() {
-			this.$emit('click');
+		clickHandler(event) {
+			this.$emit('click', event);
 		}
 	},
 	computed: {

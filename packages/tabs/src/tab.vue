@@ -10,9 +10,9 @@ export default {
 	props: {
 		title: {
 			type: String,
-			default:''
+			default: ''
 		},
-		height: Number
+		height: [Number, String]
 	},
 	computed: {
 		container() {
@@ -23,7 +23,7 @@ export default {
 			};
 
 			if (this.height) {
-				container.height = this.height + 'px';
+				container.height = isNaN(this.height) ? this.height : this.height + 'px';
 			}
 
 			return container;

@@ -61,7 +61,7 @@ export default {
 		updateTitle(text) {
 			this.titleTexts.push(text);
 		},
-		tabContentEnd(index = 0) {
+		tabContentChange(index = 0) {
 			this.index = index;
 			this.tabNav.moveLine(this.tabNav.tabNavTabs[index]);
 		},
@@ -69,11 +69,14 @@ export default {
 			this.index = index;
 			this.tabContent.moveContent(index);
 		},
-		tabContentMove(event, options) {
-			this.$emit('tab-content-move', event, options);
-		},
 		tabContentStart(event) {
 			this.$emit('tab-content-start', event);
+		},
+		tabContentMove(index, event) {
+			this.$emit('tab-content-move', index, event);
+		},
+		tabContentEnd(event) {
+			this.$emit('tab-content-end', event);
 		}
 	},
 	mounted() {
@@ -87,9 +90,10 @@ export default {
 				initIndex: this.value
 			});
 			this.tabContent = new TabContent(this.$el, {
+				change: this.tabContentChange,
+				start: this.tabContentStart,
 				move: this.tabContentMove,
 				end: this.tabContentEnd,
-				start: this.tabContentStart,
 				initIndex: this.value
 			});
 
@@ -117,9 +121,6 @@ export default {
 			return {
 				width: width + '%'
 			};
-		},
-		tabTitle() {
-			// console.log(this.items);
 		},
 		items() {
 			var items = this.children.filter(function(item) {

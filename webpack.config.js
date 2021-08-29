@@ -9,11 +9,13 @@ const MiniCss = require('mini-css-extract-plugin');
 
 const Copy = require('copy-webpack-plugin');
 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
 	mode: 'production',
-	entry: path.join(__dirname, './src/build.js'),
+	entry: path.join(__dirname, './build/build.js'),
 	output: {
-		path: path.join(__dirname, 'docs', 'gourd'),
+		path: path.join(__dirname, 'dist'),
 		filename: 'gourd.js'
 	},
 	module: {
@@ -29,23 +31,36 @@ module.exports = {
 						loader: MiniCss.loader
 					},
 					{
-						loader: 'css-loader'
+						loader: 'css-loader',
+						options: {
+							esModule: false
+						}
 					},
 					{
 						loader: 'less-loader'
 					}
 				]
-			},
-			{
-				test: /\.(eot|ttf|svg|woff|woff2)$/,
-				use: ['url-loader']
 			}, {
 				test: /\.css$/,
+				use: [
+					{
+						loader: MiniCss.loader
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							esModule: false
+						}
+					}]
+			},
+			{
+				test: /\.(svg|otf|ttf|woff2?|eot|gif|png|jpe?g)(\?\S*)?$/,
 				use: [{
-					loader: MiniCss.loader
-				},
-				{
-					loader: 'css-loader'
+					loader: 'file-loader',
+					options: {
+						name: '[name].[ext]',
+						outputPath: 'files'
+					}
 				}]
 			}
 		]
@@ -55,11 +70,6 @@ module.exports = {
 		new MiniCss({
 			filename: 'gourd.css'
 		}),
-		new Copy({
-			patterns:[{
-				from:path.join(__dirname,'assets','icon'),
-				to:path.join(__dirname,'docs','gourd','icon')
-			}]
-		})
+		new CleanWebpackPlugin()
 	]
 }

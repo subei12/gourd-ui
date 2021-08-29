@@ -91,8 +91,10 @@ class TabNav {
             this.options.end = options.end;
         }
 
+        // 初始位置
         var navOne = this.tabNavTabs[options.initIndex] || this.tabNavTabs[0];
-        navOne && this.moveLine(navOne);
+        navOne && this.moveLine(navOne, false);
+
         this.tabNav.addEventListener('touchstart', this.start.bind(this));
         this.tabNav.addEventListener('touchmove', this.move.bind(this));
         this.tabNav.addEventListener('touchend', this.end.bind(this));
@@ -151,10 +153,14 @@ class TabNav {
 
         this.options.end(index);
     }
-    moveLine(target) {
+    moveLine(target, transition = true) {
 
         if (target.classList.contains('gourd-tabs--tab')) {
             target = target.querySelector('span') || target;
+        }
+
+        if (transition) {
+            this.tabNavLine.style.transition = 'all 500ms ease';
         }
 
         var client = this.tabWarp.clientWidth / 2;
@@ -199,28 +205,34 @@ class TabContent {
     init(options) {
         var fun = function () { }
         this.options = {
-            end: fun,
+            change: fun,
             move: fun,
-            start: fun
+            start: fun,
+            end: fun
         };
 
-        if (typeof options.end === 'function') {
-            this.options.end = options.end;
-        }
-
-        if (typeof options.move === 'function') {
-            this.options.move = options.move;
+        if (typeof options.change === 'function') {
+            this.options.change = options.change;
         }
 
         if (typeof options.start === 'function') {
             this.options.start = options.start;
         }
 
+        if (typeof options.move === 'function') {
+            this.options.move = options.move;
+        }
+
+        if (typeof options.end === 'function') {
+            this.options.end = options.end;
+        }
+
+
         // 初始位置
 
         this.index = this.tabContentContainers[options.initIndex] ? options.initIndex : 0;
 
-        this.moveContent(this.index);
+        this.moveContent(this.index, false);
 
         this.isHori = true;
         this.isFirst = true;
@@ -260,7 +272,7 @@ class TabContent {
         }
 
         // 事件参数
-        this.options.move(this.index);
+        this.options.move(this.index, event);
 
 
         if (!this.isHori) return;
@@ -284,6 +296,9 @@ class TabContent {
     end(event) {
 
         this.isFirst = true;
+
+        this.options.end(event);
+
         if (!this.isHori) return;
         // this.tabContent.style.transition = 'all 0.5s';
 
@@ -306,11 +321,14 @@ class TabContent {
 
         // this.TabNav.moveLine(this.TabNav.tabNavTabs[this.index]);
     }
-    moveContent(index) {
+    moveContent(index, transition = true) {
 
         this.index = index;
 
-        this.tabContent.style.transition = 'all 0.5s';
+        if (transition) {
+            this.tabContent.style.transition = 'all 0.5s';
+        }
+
 
         if (this.index < 0) {
             this.index = 0;
@@ -325,7 +343,7 @@ class TabContent {
 
         transform(this.tabContent, 'translateX', -x);
 
-        this.options.end(this.index);
+        this.options.change(this.index);
     }
 }
 

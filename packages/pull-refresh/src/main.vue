@@ -140,7 +140,7 @@ export default {
 
 				transform(this.$refs.wrap, 'translateY', this.HeadHeight);
 			} else {
-				if (this.SuccessText) {
+				if (this.SuccessText || this.$slots.success) {
 					this.type = 4;
 					this.duration();
 				} else {

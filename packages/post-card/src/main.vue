@@ -1,5 +1,5 @@
 <template>
-  <div class="gourd-post-card line-bottom">
+  <div class="gourd-post-card line-bottom" @click="handledClick">
     <div class="gourd-post-card--left" v-if="avatar || call">
       <gourd-image v-if="avatar" width="36" round height="36" :src="avatar"></gourd-image>
       <span class="gourd-post-card--call" v-if="call">{{call}}</span>
@@ -29,8 +29,13 @@
 </template>
 
 <script>
+import GourdImage from '../../image/index';
+
 export default {
 	name: 'GourdPostCard',
+	components: {
+		GourdImage
+	},
 	props: {
 		text: {
 			type: String,
@@ -65,6 +70,11 @@ export default {
 		unameColor: {
 			type: String,
 			default: ''
+		}
+	},
+	methods: {
+		handledClick(event) {
+			this.$emit('click', event);
 		}
 	}
 };

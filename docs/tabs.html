@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./gourd/gourd.css" />
+		<style>
+			.tabs-content{
+				height:100%;
+				padding:15px;
+				background-color:#f7f8fa;
+				box-sizing:border-content;
+			}
+			
+			h1{
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>吸顶模式</h1>
+			<gourd-tabs ceiling>
+			<gourd-tab v-for="index in 20" :key="index" height="1000" :title="'标签'+index">
+			  <div class="tabs-content">内容{{index}}</div>
+			</gourd-tab>
+			 </gourd-tabs>
+		</div>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js"></script>
+		<script src="./gourd/gourd.js"></script>
+		<script>
+			new Vue({
+				el:'#app'
+			});
+		</script>
+	</body>
+</html>

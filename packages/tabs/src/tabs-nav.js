@@ -29,7 +29,7 @@ export default {
             var navStyle = {};
 
             if (this.TabItems.length < 5) {
-                navStyle.width = '100%'
+                navStyle.width = '100%';
             }
             return navStyle;
         }

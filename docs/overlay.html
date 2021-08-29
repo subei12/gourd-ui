@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./gourd/gourd.css" />
+		<style>
+			#app{
+				padding: 10px;
+			}
+			
+			h1{
+				padding: 10px;
+				color: #8f9ca2;
+				font-size: 16px;
+				font-weight: normal;
+			}
+			
+			.demo-overlay--wrap {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>基本用法</h1>
+			<gourd-button type="primary" @click="show = true">显示遮罩层</gourd-button>
+			<gourd-overlay v-model="show" @click="show = false"></gourd-overlay>
+			
+			<h1>嵌入内容</h1>
+			<gourd-button type="primary" @click="showOverlay = true">嵌入内容</gourd-button>
+			<gourd-overlay color="rgba(255, 255, 255, 0.5)" v-model="showOverlay" @click="showOverlay = false">
+				<div class="demo-overlay--wrap">
+				   <gourd-loading size="26"></gourd-loading>
+				 </div>
+			</gourd-overlay>
+		</div>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js"></script>
+		<script src="./gourd/gourd.js"></script>
+		<script>
+			new Vue({
+				el:'#app',
+				data(){
+					return {
+						show:false,
+						showOverlay:false
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./gourd/gourd.css" />
+		<style>
+			#app{
+				padding: 10px;
+			}
+			
+			h1{
+				padding: 10px;
+				color: #8f9ca2;
+				font-size: 16px;
+				font-weight: normal;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<gourd-button @click="show = true">打开dialog</gourd-button>
+			<gourd-dialog v-model="show">
+			    <span slot="title">退出登录</span>
+			  <template slot="footer">
+			  <gourd-button @click="show = false">取消</gourd-button>
+			  <gourd-button>确定</gourd-button>
+			  </template>
+			  <span>确定退出吗？</span>
+			</gourd-dialog>
+			
+			<gourd-button @click="clickOverlayClose = true">点击遮罩层关闭</gourd-button>
+			<gourd-dialog v-model="clickOverlayClose" :title-center="false" close-on-click-overlay>
+			    <span slot="title">退出登录</span>
+			  <template slot="footer">
+			  <gourd-button @click="clickOverlayClose = false">取消</gourd-button>
+			  <gourd-button>确定</gourd-button>
+			  </template>
+			  <span>确定退出吗？</span>
+			</gourd-dialog>
+		</div>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js"></script>
+		<script src="./gourd/gourd.js"></script>
+		<script>
+			new Vue({
+				el:'#app',
+				data(){
+					return {
+						show:false,
+						clickOverlayClose:false
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

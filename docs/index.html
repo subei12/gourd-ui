@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="Description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	<link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.3/theme-chalk/index.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 	<link rel="stylesheet" href="./gourd/gourd.css" />
-	<link rel="stylesheet" href="./gourd/icon/iconfont.css" />
 	<style type="text/css">
-		#gourd,.gourd-wrap{
+		#gourd,
+		.gourd-wrap {
 			max-width: 750px;
 			margin: 0 auto;
 		}
-		
-		.swipe-wrap{
+
+		.swipe-wrap {
 			margin: 0 10px;
 		}
-		
-		.swipe-demo{
+
+		.swipe-demo {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -31,68 +32,120 @@
 			font-size: 16px;
 			background-color: #aa7ded;
 		}
-		
-		.gourd-swipe{
-			height:200px
+
+		.gourd-swipe {
+			height: 200px
 		}
-		
-		.gourd-swipe img{
-			object-fit:cover;
+
+		.gourd-swipe img {
+			object-fit: cover;
 		}
-		
-		.tabs-wrap{
-			max-width:500px;
-			margin:auto;
+
+		.tabs-wrap {
+			max-width: 500px;
+			margin: auto;
 		}
-		
-		.tabs-content{
-			padding:16px 10px;
-			background-color:#f7f8fa;
+
+		.markdown-section .iframe {
+			position: relative;
+			left: 50%;
+			width: 500px;
+			min-width: auto;
+			margin-left: -250px;
 		}
-		
-		table{
-			display: table!important;
+
+		.tabs-content {
+			height: 100%;
+			padding: 16px 10px;
+			overflow: auto;
+			background-color: #f7f8fa;
 		}
-		
-		.gourd-cell-group .gourd-cell-group--title{
+
+		.tabs-content .gourd-pull-refresh {
+			height: 100%;
+		}
+
+		table {
+			display: table !important;
+		}
+
+		.gourd-cell-group .gourd-cell-group--title {
 			margin: 0;
+		}
+
+		.markdown-section .demo-post-card--ref {
+			border-left: 0;
+			margin: auto;
+			padding: 0;
+		}
+
+		.demo-post-card {
+			flex: 1;
+		}
+
+		.gourd-post-card .demo-post-card--ref {
+			padding: 10px;
+			color: #a9a9a9;
+			background-color: #f0f0f0;
+			border-radius: 2px;
+		}
+
+		.demo-post-card--ref em {
+			font-style: normal;
+			margin-right: 4px;
+		}
+
+		.demo-post-card--ref .demo-post-card--row {
+			margin-top: 10px;
+			color: #646464;
+		}
+
+		.demo-post-card--row {
+			margin-top: 6px;
 		}
 	</style>
 </head>
+
 <body>
-  <div id="app"></div>
+	<div id="app"></div>
 	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
 	<script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js"></script>
 	<script src="./gourd/gourd.js"></script>
-  <script>
-		
-	
-    window.$docsify = {
-      name: 'gourd',
-      repo: '',
-			vueGlobalOptions:{
-				data(){
+	<script>
+
+
+		window.$docsify = {
+			name: 'gourd',
+			repo: '',
+			vueGlobalOptions: {
+				data() {
 					return {
-						active:1
+						active: 1
 					}
 				}
 			},
-			loadSidebar:'loadSidebar.md',
-			subMaxLevel:3,
-			vueMounts:{
-				'#gourd':{
-					data(){
+			loadSidebar: 'loadSidebar.md',
+			subMaxLevel: 3,
+			vueMounts: {
+				'#gourd': {
+					data() {
 						return {
-							active:1
+							active: 1,
+							covers: [
+								'https://img1.baidu.com/it/u=1250622511,3366934774&fm=26&fmt=auto&gp=0.jpg',
+								'https://img1.baidu.com/it/u=93208989,471774445&fm=26&fmt=auto&gp=0.jpg',
+								'https://img2.baidu.com/it/u=1786516055,2860344427&fm=26&fmt=auto&gp=0.jpg'
+							]
 						}
 					},
-					router:new VueRouter({})
+					router: new VueRouter({})
 				}
 			}
-    }
-		
-  </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+		}
+
+	</script>
+	<!-- Docsify v4 -->
+	<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
+
 </html>
