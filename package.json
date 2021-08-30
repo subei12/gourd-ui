@@ -1,14 +1,14 @@
 {
   "name": "gourd-ui",
   "version": "1.0.0",
-  "description": "",
+  "description": "一个基于葫芦侠移动端UI设计的Vue轻量级的组件库，其中组件属性，代码风格等参考了Element和Vant。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "dev": "webpack --config webpack.dev.js"
   },
-  "keywords": [],
+  "keywords": ["gourd","gourd-ui","components","Vue组件库","移动端组件库"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
