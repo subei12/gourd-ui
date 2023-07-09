@@ -25,6 +25,9 @@
         <template v-else>{{text}}</template>
       </div>
     </div>
+    <div class="gourd-post-card--bottom" >
+      <slot name="post"></slot>
+    </div>
   </div>
 </template>
 
