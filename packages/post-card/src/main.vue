@@ -1,7 +1,7 @@
 <template>
   <div class="gourd-post-card line-bottom" @click="handledClick">
     <div class="gourd-post-card--left" v-if="avatar || call">
-      <gourd-image v-if="avatar" width="36" round height="36" :src="avatar"></gourd-image>
+      <gourd-image v-if="avatar" width="36" round height="36" :src="avatar" @click.stop="clickAvatar"></gourd-image>
       <span class="gourd-post-card--call" v-if="call">{{call}}</span>
     </div>
     <div class="gourd-post-card--right">
@@ -25,8 +25,8 @@
         <template v-else>{{text}}</template>
       </div>
     </div>
-    <div class="gourd-post-card--bottom" >
-      <slot name="post"></slot>
+    <div class="gourd-post-card--bottom" v-if="$slots.bottom">
+      <slot name="bottom"></slot>
     </div>
   </div>
 </template>
@@ -78,7 +78,10 @@ export default {
 	methods: {
 		handledClick(event) {
 			this.$emit('click', event);
-		}
+		},
+    clickAvatar(event) {
+      this.$emit('clickAvatar', event);
+    }
 	}
 };
 </script>

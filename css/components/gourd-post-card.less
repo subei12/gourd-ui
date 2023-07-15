@@ -20,6 +20,9 @@
 
     .gourd-post-card--right {
         flex: 1;
+        flex-shrink: 0; /* 右边块不缩小 */
+        white-space: normal; /* 右边块内容换行 */
+        word-break: break-all; /* 单词内换行 */
 
         .gourd-post-card--top {
             display: flex;
