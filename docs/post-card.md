@@ -243,7 +243,7 @@ filters:{
 
 | 事件名 | 说明 | 回调参数 | 
 | --- | --- | --- | 
-| `clickAvatar` | 点击时触发，已禁止冒泡	 | `event: Event` | 
+| `clickAvatar` | 点击时头像（avatar）触发，已禁止冒泡	 | `event: Event` | 
 | `click` | 点击时触发，除头像（avatar）外	 | `event: Event` | 
 
 > ## Slots
@@ -253,6 +253,7 @@ filters:{
 | `default` | 明信片内容 |
 | `tag` | 明信片标签 |
 | `bottom` | 底部插槽（可选） |
+| `floorTag` | 在floor位置放入自定义元素（可选） |
 
 </div>
 

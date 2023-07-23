@@ -10,7 +10,10 @@
 
         <gourd-image width="16" round height="16" v-for="(item,index) in medal" :key="index" :src="item"></gourd-image>
 
-        <span class="gourd-post-card--floor" v-if="floor">{{floor}}</span>
+        <span class="gourd-post-card--floor" v-if="floor && !$slots.floorTag">{{floor}}</span>
+        <span class="gourd-post-card--floor" v-if="$slots.floorTag">
+          <slot name="floorTag"></slot>
+        </span>
       </div>
       <div class="gourd-post-card--row" v-if="$slots.tag">
         <slot name="tag"></slot>
